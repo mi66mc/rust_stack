@@ -15,8 +15,4 @@ impl<T> Node<T> {
     pub fn peek_value(&self) -> &T {
         &self.value
     }
-
-    pub fn set_next(&mut self, next: Option<Box<Node<T>>>) {
-        self.next = next;
-    }
 }

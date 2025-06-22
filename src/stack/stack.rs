@@ -23,8 +23,24 @@ impl<T> Stack<T> {
         self.size += 1;
     }
 
+    pub fn pop(&mut self) -> Option<T> {
+        self.top.take().map(|node| {
+            self.set_top(node.next);
+            self.size -= 1;
+            node.value
+        })
+    }
+
+    pub fn peek(&self) -> Option<&T> {
+        self.top.as_ref().map(|node| node.peek_value())
+    }
+
     pub fn get_size(&self) -> usize {
         self.size
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.top.is_none()
     }
 
     fn set_top(&mut self, node: Option<Box<Node<T>>>) {

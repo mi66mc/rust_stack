@@ -1,9 +1,14 @@
 mod stack;
 
 use stack::node::Node;
+use stack::stack::Stack;
 
 fn main() {
-    let node = Node::new(5, None);
-    let node2 = Node::new(5,Some(Box::new(node)));
-    println!("{:?}", node2);
+
+    let mut stack: Stack<i32> = Stack::new();
+
+    stack.push(1);
+    stack.push(2);
+
+    println!("{:?}", stack);
 }
